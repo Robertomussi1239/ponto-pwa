@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Bater Ponto Remoto</title>
+  <meta name="theme-color" content="#1A73E8">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="description" content="Registro de ponto remoto com tolerância de 30 minutos.">
+</head>
+<body>
+  <div class="container">
+    <div class="card" id="loginCard">
+      <h1>Entrar</h1>
+      <p class="subtitle">Use sua matrícula e senha. Ex.: Matrícula <strong>01</strong> e senha <strong>123456</strong>.</p>
+      <form id="loginForm" class="grid" autocomplete="off">
+        <div>
+          <label>Matrícula</label>
+          <input id="matricula" placeholder="Ex.: 01" required>
+        </div>
+        <div>
+          <label>Senha</label>
+          <input id="senha" type="password" placeholder="Sua senha" required>
+        </div>
+        <div style="grid-column: 1 / -1;">
+          <button type="submit">Acessar</button>
+        </div>
+        <div class="small" id="loginErro"></div>
+      </form>
+      <hr>
+      <p class="small">Instale no celular (Adicionar à tela inicial) para experiência de app.</p>
+    </div>
+
+    <div class="card" id="appCard" style="display:none">
+      <h1>Olá, <span id="nome"></span> 👋</h1>
+      <p class="subtitle">Horário de Brasília (cronômetro em tempo real): <strong id="relogio">--:--:--</strong></p>
+
+      <div class="grid">
+        <div class="kv"><span>Entrada fixa</span><strong id="horarioEntrada">--:--</strong></div>
+        <div class="kv"><span>Saída fixa</span><strong id="horarioSaida">--:--</strong></div>
+      </div>
+
+      <p>
+        Status: <span id="statusBadge" class="badge err">Fora do Período</span>
+        <br><span id="statusInfo" class="small"></span>
+      </p>
+
+      <button id="btnRegistrar" disabled>Aguardando janela válida</button>
+
+      <hr>
+      <h2>Registros do dia</h2>
+      <table class="table">
+        <thead><tr><th>Data</th><th>Entrada</th><th>Saída</th></tr></thead>
+        <tbody id="tbodyRegistros"></tbody>
+      </table>
+
+      <footer>Demo local • Os registros ficam apenas neste dispositivo. Integre uma API para uso oficial.</footer>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
